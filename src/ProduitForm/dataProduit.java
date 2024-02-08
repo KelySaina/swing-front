@@ -19,11 +19,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class dataProduit {    
     
+    private String HOST = "http://localhost:3000";
     
     public JsonArray getAllData(){
         JsonArray jA = new JsonArray();
         try{
-            URL endpoint = new URL("http://localhost/PhpProject1/read.php");
+            URL endpoint = new URL(HOST+"/read.php");
             HttpURLConnection connexion = (HttpURLConnection) endpoint.openConnection();
             connexion.setRequestMethod("GET");
             connexion.connect();
@@ -50,7 +51,7 @@ public class dataProduit {
     
     public String sendData(String data) {
         try {
-            URL url = new URL("http://localhost/PhpProject1/create.php");
+            URL url = new URL(HOST+"/create.php");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
@@ -62,7 +63,7 @@ public class dataProduit {
             // Get the output stream of the connection and write the data
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(data.getBytes(StandardCharsets.UTF_8));
-                System.out.println(os);
+                //System.out.println(os);
             }
             
             // Read the response
@@ -85,7 +86,7 @@ public class dataProduit {
     public String deleteData(String data) {
         try {
             // Create a URL object for your delete endpoint
-            URL url = new URL("http://localhost/PhpProject1/delete.php");
+            URL url = new URL(HOST+"/delete.php");
 
             // Open a connection to the URL
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -117,7 +118,7 @@ public class dataProduit {
     
     public String editData(String data) {
         try {
-            URL url = new URL("http://localhost/PhpProject1/update.php");
+            URL url = new URL(HOST+"/update.php");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
@@ -129,7 +130,7 @@ public class dataProduit {
             // Get the output stream of the connection and write the data
             try (OutputStream os = connection.getOutputStream()) {
                 os.write(data.getBytes(StandardCharsets.UTF_8));
-                System.out.println(os);
+                //System.out.println(os);
             }
             
             // Read the response

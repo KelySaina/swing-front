@@ -220,7 +220,7 @@ public class fenetreProduit extends javax.swing.JFrame {
         
         String json = gson.toJson(mp);
         
-        System.out.println(json);
+        //System.out.println(json);
         
         
         dataProduit data = new dataProduit();
